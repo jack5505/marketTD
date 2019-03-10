@@ -3,6 +3,7 @@ package uz.dukon.service.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import uz.dukon.controllers.model.ProductDtoList;
 import uz.dukon.controllers.model.ProductModal;
 import uz.dukon.controllers.model.TypeDto;
 import uz.dukon.controllers.newmodel.CartTable;
@@ -126,6 +127,19 @@ public class ProductServiceImpl  implements ProductService
             typeProductsEntity1.setDeleted(true);
             typeProductRepository.save(typeProductsEntity1);
         }
+    }
+
+    @Override
+    public void getProductsForContent(List<ProductDtoList> productDtoListList) {
+        List<ProductEntity> productEntities = productRepository.findAll();
+        productEntities.forEach(productEntity -> {
+            ProductDtoList productDtoList = new ProductDtoList();
+            productDtoList.setId((long) (productDtoListList.size() + 1));
+            productDtoList.setProductName(productEntity.getName());
+            productDtoList.setDimension(productEntity.getDimensionType());
+//            productDtoList.setSellPrice(new BigDecimal(productEntity.getSellPrice()));
+            productDtoListList.add(productDtoList);
+        });
     }
 
 }

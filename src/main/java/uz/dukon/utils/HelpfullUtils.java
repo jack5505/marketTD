@@ -3,11 +3,12 @@ package uz.dukon.utils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.util.Callback;
+import uz.dukon.controllers.model.ProductDtoList;
 import uz.dukon.controllers.model.ProductTable;
 import uz.dukon.controllers.newmodel.CartTable;
 
@@ -28,12 +29,12 @@ public class HelpfullUtils {
                 }
             });
         }
-        public static void setCenterText(TableColumn<ProductTable,String> table)
+        public static void setCenterText(TableColumn<ProductDtoList,String> table)
         {
-            table.setCellFactory(new Callback<TableColumn<ProductTable, String>, TableCell<ProductTable, String>>() {
+            table.setCellFactory(new Callback<TableColumn<ProductDtoList, String>, TableCell<ProductDtoList, String>>() {
                 @Override
-                public TableCell<ProductTable, String> call(TableColumn<ProductTable, String> param) {
-                    TableCell<ProductTable,String> cell = new TableCell<ProductTable,String>(){
+                public TableCell<ProductDtoList, String> call(TableColumn<ProductDtoList, String> param) {
+                    TableCell<ProductDtoList,String> cell = new TableCell<ProductDtoList,String>(){
                         @Override
                         protected void updateItem(String item, boolean empty) {
                             super.updateItem(item, empty);
@@ -56,14 +57,14 @@ public class HelpfullUtils {
                 }
             });
         }
-    public static void setCenterGraphic(TableColumn<ProductTable,Button> table)
+    public static void setCenterGraphic(TableColumn<ProductDtoList,ImageView> table)
     {
-        table.setCellFactory(new Callback<TableColumn<ProductTable, Button>, TableCell<ProductTable, Button>>() {
+        table.setCellFactory(new Callback<TableColumn<ProductDtoList, ImageView>, TableCell<ProductDtoList,ImageView>>() {
             @Override
-            public TableCell<ProductTable, Button> call(TableColumn<ProductTable, Button> param) {
-                TableCell<ProductTable,Button> cell = new TableCell<ProductTable,Button>(){
+            public TableCell<ProductDtoList,ImageView> call(TableColumn<ProductDtoList, ImageView> param) {
+                TableCell<ProductDtoList,ImageView> cell = new TableCell<ProductDtoList,ImageView>(){
                     @Override
-                    protected void updateItem(Button item, boolean empty) {
+                    protected void updateItem(ImageView item, boolean empty) {
                         super.updateItem(item, empty);
                         if(item != null)
                         {
@@ -113,12 +114,12 @@ public class HelpfullUtils {
         });
     }
 
-    public static void setCenterBigDecimal(TableColumn<ProductTable,BigDecimal> table)
+    public static void setCenterBigDecimal(TableColumn<ProductDtoList,BigDecimal> table)
     {
-        table.setCellFactory(new Callback<TableColumn<ProductTable, BigDecimal>, TableCell<ProductTable, BigDecimal>>() {
+        table.setCellFactory(new Callback<TableColumn<ProductDtoList, BigDecimal>, TableCell<ProductDtoList, BigDecimal>>() {
             @Override
-            public TableCell<ProductTable, BigDecimal> call(TableColumn<ProductTable, BigDecimal> param) {
-                TableCell<ProductTable,BigDecimal> cell = new TableCell<ProductTable,BigDecimal>(){
+            public TableCell<ProductDtoList, BigDecimal> call(TableColumn<ProductDtoList, BigDecimal> param) {
+                TableCell<ProductDtoList,BigDecimal> cell = new TableCell<ProductDtoList,BigDecimal>(){
                     @Override
                     protected void updateItem(BigDecimal item, boolean empty) {
                         super.updateItem(item, empty);

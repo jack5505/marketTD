@@ -1,5 +1,6 @@
 package uz.dukon.service;
 
+import uz.dukon.controllers.model.ProductDtoList;
 import uz.dukon.controllers.model.ProductModal;
 import uz.dukon.controllers.model.TypeDto;
 import uz.dukon.controllers.newmodel.CartTable;
@@ -24,4 +25,6 @@ public interface ProductService
     List<TypeDto> getAllType();
 
     void deleteType(Long typeId);
+
+    void getProductsForContent(List<ProductDtoList> productDtoListList);
 }
