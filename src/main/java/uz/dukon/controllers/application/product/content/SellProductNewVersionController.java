@@ -52,15 +52,18 @@ public class SellProductNewVersionController implements Initializable {
         //Add button will open to us ProductModal
         addProduct.setOnAction(event ->
         {
-            System.out.println(FxmlUrl.Product.productModal);
-            WPopup wPopup = new WPopup(FxmlUrl.Product.productModal,"Товар кўшиш");
-            wPopup.show();
-            wPopup.getStage().setOnCloseRequest(event1 ->
-            {
-                AddProductEvent addProductEvent = new AddProductEvent(AddProductEvent.ANY);
-                App.eventBus.fireEvent(addProductEvent);
-            });
-//                new WPopup(FxmlUrl.Product.productModal,"Товар кўшиш").show();
+//            System.out.println(FxmlUrl.Product.productModal);
+//            WPopup wPopup = new WPopup(FxmlUrl.Product.productModal,"Товар кўшиш");
+//            wPopup.show();
+//            wPopup.getStage().setOnCloseRequest(event1 ->
+//            {
+//                AddProductEvent addProductEvent = new AddProductEvent(AddProductEvent.ANY);
+//                App.eventBus.fireEvent(addProductEvent);
+//            });
+               WPopup wPopup =  new WPopup(FxmlUrl.Product.productsView,"Товар");
+               wPopup.setMaximized();
+               wPopup.show();
+
         });
 
         report.setOnAction(event ->

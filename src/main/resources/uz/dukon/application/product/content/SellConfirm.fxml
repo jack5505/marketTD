@@ -57,32 +57,32 @@
          </font>
 
       </JFXButton>
-      <Label layoutX="61.0" layoutY="220.0" prefHeight="20.0" prefWidth="107.0" text="Жами сумма:">
+      <Label layoutX="60.0" layoutY="186.0" prefHeight="20.0" prefWidth="107.0" text="Жами сумма:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="262.0" text="Тўланган Сумма:">
+      <Label layoutX="56.0" layoutY="218.0" text="Тўланган Сумма:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="totalProductSumm" layoutX="207.0" layoutY="224.0" prefHeight="25.0" prefWidth="122.0" text="Label">
+      <Label fx:id="totalProductSumm" layoutX="201.0" layoutY="185.0" prefHeight="25.0" prefWidth="122.0" text="Label">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="paidTotalSumm" layoutX="207.0" layoutY="262.0" prefHeight="25.0" prefWidth="139.0" text="Label">
+      <Label fx:id="paidTotalSumm" layoutX="202.0" layoutY="218.0" prefHeight="25.0" prefWidth="139.0" text="Label">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="301.0" prefHeight="25.0" prefWidth="122.0" text="Кайтим:">
+      <Label layoutX="56.0" layoutY="255.0" prefHeight="25.0" prefWidth="122.0" text="Кайтим:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="change" layoutX="207.0" layoutY="301.0" prefHeight="25.0" prefWidth="139.0" text="Label">
+      <Label fx:id="change" layoutX="202.0" layoutY="255.0" prefHeight="25.0" prefWidth="139.0" text="Label">
          <font>
             <Font size="18.0" />
          </font>

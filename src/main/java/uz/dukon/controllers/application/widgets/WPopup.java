@@ -39,6 +39,9 @@ public class WPopup {
         }
     }
 
+    public void setMaximized(){
+       stage.setMaximized(true);
+    }
     public void setModality(Modality modality) {
         this.stage.initModality(modality);
     }
