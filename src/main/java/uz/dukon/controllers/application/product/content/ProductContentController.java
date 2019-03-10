@@ -7,16 +7,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import uz.dukon.App;
+import uz.dukon.controllers.application.product.events.AddProductEvent;
 import uz.dukon.controllers.application.widgets.WPopup;
 import uz.dukon.controllers.model.ProductDtoList;
 import uz.dukon.service.ProductService;
 import uz.dukon.utils.FxmlUrl;
 import uz.dukon.utils.HelpfullUtils;
 
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class ProductContentController implements Initializable
     private TableColumn<ProductDtoList,String> productDimenstionC;
 
     @FXML
-    private TableColumn<ProductDtoList,BigDecimal> productPriceC;
+    private TableColumn<ProductDtoList,Long> productPriceC;
 
     private List<ProductDtoList> productDtoListList;
 
@@ -74,7 +75,16 @@ public class ProductContentController implements Initializable
 
     }
 
-    private void fillTable() {
+    private void fillTable()
+    {
+        productDtoListList.forEach(productDtoList -> {
+            System.out.println(productDtoList.getPathImage());
+            Image image = new Image("file:///"+productDtoList.getPathImage());
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(60);
+            imageView.setFitWidth(60);
+            productDtoList.setImage(imageView);
+        });
         tableView.getItems().addAll(productDtoListList);
     }
 
@@ -82,6 +92,15 @@ public class ProductContentController implements Initializable
         addProduct.setOnAction(event -> {
             //open new Add window for new product
             new WPopup(FxmlUrl.Product.productModal,"Янги махсулот кўшиш").show();
+        });
+
+        //After adding some products
+        App.eventBus.addEventHandler(AddProductEvent.ANY,event ->
+        {
+            tableView.getItems().clear();
+            productDtoListList.clear();
+            App.ctx.getBean(ProductService.class).getProductsForContent(productDtoListList);
+            fillTable();
         });
 
         //o`chirish
@@ -94,7 +113,11 @@ public class ProductContentController implements Initializable
                 System.out.println("tanlandi");
             }
         });
-        exit.setOnAction(event -> {
+
+        exit.setOnAction(event ->
+        {
+            AddProductEvent addProductEvent = new AddProductEvent(AddProductEvent.ANY);
+            App.eventBus.fireEvent(addProductEvent);
             Stage stage = (Stage)((Button)(event).getSource()).getScene().getWindow();
             stage.close();
         });
@@ -105,12 +128,12 @@ public class ProductContentController implements Initializable
         numC.setCellValueFactory(new PropertyValueFactory<ProductDtoList, Long>("id"));
         productNameC.setCellValueFactory(new PropertyValueFactory<ProductDtoList, String>("productName"));
         productDimenstionC.setCellValueFactory(new PropertyValueFactory<ProductDtoList, String>("dimension"));
-        productPriceC.setCellValueFactory(new PropertyValueFactory<ProductDtoList, BigDecimal>("sellPrice"));
+        productPriceC.setCellValueFactory(new PropertyValueFactory<ProductDtoList, Long>("sellPrice"));
         productImageC.setCellValueFactory(new PropertyValueFactory<ProductDtoList, ImageView>("image"));
         HelpfullUtils.setCenterText(productNameC);
         HelpfullUtils.setCenterText(productDimenstionC);
         HelpfullUtils.setCenterGraphic(productImageC);
-        HelpfullUtils.setCenterBigDecimal(productPriceC);
+        HelpfullUtils.setCenterLong(productPriceC);
         HelpfullUtils.setCenterLong(numC);
 
     }

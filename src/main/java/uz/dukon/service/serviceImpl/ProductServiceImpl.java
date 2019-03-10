@@ -34,14 +34,11 @@ public class ProductServiceImpl  implements ProductService
     {
         int diff = productRepository.cnt();
         ProductEntity productEntity = new ProductEntity();
-        if(productModal.getPurchase() != null)
-        productEntity.setGetPrice(productModal.getPurchase());
-        productEntity.setDimensionType(productModal.getDimensionType());
         productEntity.setName(productModal.getProductName());
-        productEntity.setSellType(productModal.getSellType());
         productEntity.setTypeId(productModal.getTypeId());
-        if(productModal.getSold() != null)
-            productEntity.setSellPrice(productModal.getSold());
+        productEntity.setSellPrice(productModal.getSellPrice());
+        productEntity.setDimensionType(productModal.getDimension());
+        productEntity.setImagePath(productModal.getPathImage());
         productEntity.setDeleted(false);
         productRepository.save(productEntity);
         int after = productRepository.cnt();
@@ -137,6 +134,8 @@ public class ProductServiceImpl  implements ProductService
             productDtoList.setId((long) (productDtoListList.size() + 1));
             productDtoList.setProductName(productEntity.getName());
             productDtoList.setDimension(productEntity.getDimensionType());
+            productDtoList.setSellPrice(productEntity.getSellPrice());
+            productDtoList.setPathImage(productEntity.getImagePath());
 //            productDtoList.setSellPrice(new BigDecimal(productEntity.getSellPrice()));
             productDtoListList.add(productDtoList);
         });

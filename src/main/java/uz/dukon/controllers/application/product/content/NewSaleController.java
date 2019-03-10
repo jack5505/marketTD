@@ -317,7 +317,7 @@ public class NewSaleController implements Initializable
                     Button button = new Button();
                     button.setId(""+createMenu.get(typeDto.getTypeId()).get(data).getProductId());
                     button.setText(createMenu.get(typeDto.getTypeId()).get(data).getNameP());
-                    String s = "C://images//images1.jpg";
+                    String s = "C:/images/images1.jpg";
                     String temp = "file:///";
                     temp+=s;
 //                    button.setStyle("-fx-background-image: url("+temp+")");

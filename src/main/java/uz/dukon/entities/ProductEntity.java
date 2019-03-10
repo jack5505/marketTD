@@ -13,8 +13,6 @@ public class ProductEntity
     private Long id;
     @Column
     private String name;
-    @Column
-    private Long getPrice;
 
     @Column
     private String dimensionType;
@@ -27,6 +25,8 @@ public class ProductEntity
 
     @Column
     private String imagePath;
+
+
 
 
     @ManyToOne
@@ -63,13 +63,7 @@ public class ProductEntity
         this.name = name;
     }
 
-    public Long getGetPrice() {
-        return getPrice;
-    }
 
-    public void setGetPrice(Long getPrice) {
-        this.getPrice = getPrice;
-    }
 
     public String getDimensionType() {
         return dimensionType;

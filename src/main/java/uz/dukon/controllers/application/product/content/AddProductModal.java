@@ -15,8 +15,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.util.FileSystemUtils;
+import uz.dukon.App;
+import uz.dukon.controllers.application.product.events.AddProductEvent;
+import uz.dukon.controllers.application.product.events.AddTypeEvent;
 import uz.dukon.controllers.application.widgets.FilterForTextField;
 import uz.dukon.controllers.application.widgets.WPopup;
+import uz.dukon.controllers.model.ProductModal;
+import uz.dukon.controllers.model.TypeDto;
+import uz.dukon.service.ProductService;
 import uz.dukon.utils.FxmlUrl;
 
 import javax.imageio.ImageIO;
@@ -40,11 +46,10 @@ public class AddProductModal implements Initializable
     @FXML
     private JFXTextField sold;
 
-    @FXML
-    private JFXTextField  dimensionCount;
+
 
     @FXML
-    private JFXComboBox<String> types;
+    private JFXComboBox<TypeDto> types;
 
     @FXML
     private Button addType;
@@ -71,8 +76,6 @@ public class AddProductModal implements Initializable
     @FXML
     private Label fill2;
 
-    @FXML
-    private Label fill3;
 
     @FXML
     private Label fill4;
@@ -81,7 +84,7 @@ public class AddProductModal implements Initializable
     private JFXTextField dimensionQuantity;
 
 
-
+    private ProductModal productModal = new ProductModal();
 
 
     @Override
@@ -89,7 +92,7 @@ public class AddProductModal implements Initializable
     {
         events();
         prepare();
-        types.getItems().add("bir");
+
 
 
     }
@@ -97,10 +100,9 @@ public class AddProductModal implements Initializable
         infoAboutProduct.setVisible(false);
         fill1.setVisible(false);
         fill2.setVisible(false);
-        fill3.setVisible(false);
         fill4.setVisible(false);
         FilterForTextField.isIntegerValidation(sold);
-        FilterForTextField.isDoubleValidation(dimensionQuantity);
+        types.getItems().addAll(App.ctx.getBean(ProductService.class).getAllType());
     }
     private void events()
     {
@@ -123,7 +125,7 @@ public class AddProductModal implements Initializable
             }
             String temp = savePlace.getAbsolutePath();
             temp +="\\" + path.getName();
-
+            productModal.setPathImage(temp);
             System.out.println(temp);
             savePlace = new File(temp);
             try
@@ -149,7 +151,7 @@ public class AddProductModal implements Initializable
             check();
             if(allFilled())
             {
-                System.out.println("yes");
+                App.ctx.getBean(ProductService.class).create(productModal);
                 infoAboutProduct.setText("Товар Кўшилди: " + productName.getText());
                 infoAboutProduct.setVisible(true);
                 clear();
@@ -161,6 +163,9 @@ public class AddProductModal implements Initializable
         //Cancel button
         btnCancel.setOnAction(event -> {
             close(event);
+            System.out.println("boshla");
+            AddProductEvent addProductEvent = new AddProductEvent(AddProductEvent.ANY);
+            App.eventBus.fireEvent(addProductEvent);
         });
 
         //Call window of Type
@@ -169,13 +174,16 @@ public class AddProductModal implements Initializable
             new WPopup(FxmlUrl.Product.addType,"Тип кўшиш").show();
         });
 
+        App.eventBus.addEventHandler(AddTypeEvent.ANY,event -> {
+            types.getItems().addAll(App.ctx.getBean(ProductService.class).getAllType());
+            types.getSelectionModel().selectLast();
+        });
     }
 
     private void clear() {
         productName.setText("");
         productName.requestFocus();
         sold.setText("");
-        dimensionCount.setText("");
         dimensionQuantity.setText("");
         img.setImage(null);
     }
@@ -185,18 +193,20 @@ public class AddProductModal implements Initializable
         Image image = img.getImage();
         if(image == null)
             return false;
-//        if(types.getSelectionModel().isEmpty())
-//            return false;
-
-        if(fill1.isVisible() || fill2.isVisible() || fill3.isVisible() || fill4.isVisible())
+        if(types.getSelectionModel().isEmpty())
             return false;
+        if(fill1.isVisible() || fill2.isVisible() ||  fill4.isVisible())
+            return false;
+        productModal.setProductName(productName.getText());
+        productModal.setSellPrice(Long.parseLong(sold.getText()));
+        productModal.setTypeId(types.getSelectionModel().getSelectedItem().getTypeId());
+        productModal.setDimension(dimensionQuantity.getText());
         return true;
     }
 
     private void check() {
         fill1.setVisible(productName.getText().isEmpty());
         fill2.setVisible(sold.getText().isEmpty());
-        fill3.setVisible(dimensionCount.getText().isEmpty());
         fill4.setVisible(dimensionQuantity.getText().isEmpty());
     }
 

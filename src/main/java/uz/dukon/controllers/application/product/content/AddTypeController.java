@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import uz.dukon.App;
+import uz.dukon.controllers.application.product.events.AddTypeEvent;
+import uz.dukon.service.ProductService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,11 +68,9 @@ public class AddTypeController implements Initializable {
 
     private void saveIt()
     {
-
-        //Save It
-        System.out.println("Save it");
-
-
+        App.ctx.getBean(ProductService.class).createType(field.getText());
+        AddTypeEvent addTypeEvent = new AddTypeEvent(AddTypeEvent.ANY);
+        App.eventBus.fireEvent(addTypeEvent);
     }
 
 }

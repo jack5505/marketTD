@@ -2,8 +2,6 @@ package uz.dukon.controllers.model;
 
 import javafx.scene.image.ImageView;
 
-import java.math.BigDecimal;
-
 /**
  * Created by Jack on 18.02.2019.
  */
@@ -12,7 +10,7 @@ public class ProductDtoList {
     private String productName;
     private String type;
     private String dimension;
-    private BigDecimal sellPrice;
+    private Long sellPrice;
     private String pathImage;
     private ImageView image;
 
@@ -48,11 +46,11 @@ public class ProductDtoList {
         this.dimension = dimension;
     }
 
-    public BigDecimal getSellPrice() {
+    public Long getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(BigDecimal sellPrice) {
+    public void setSellPrice(Long sellPrice) {
         this.sellPrice = sellPrice;
     }
 

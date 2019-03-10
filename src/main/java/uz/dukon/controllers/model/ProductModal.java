@@ -1,27 +1,14 @@
 package uz.dukon.controllers.model;
 
-import java.math.BigDecimal;
-
 /**
  * Created by Jack on 17.02.2019.
  */
 public class ProductModal {
-    private Long id;
     private String productName;
-    private Long sold;
-    private Long purchase;
-    private String dimensionType;
-    private BigDecimal defaultSize;
-    private String sellType;
+    private Long sellPrice;
+    private String dimension;
     private Long typeId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String pathImage;
 
     public String getProductName() {
         return productName;
@@ -31,45 +18,23 @@ public class ProductModal {
         this.productName = productName;
     }
 
-    public Long getSold() {
-        return sold;
+    public Long getSellPrice() {
+        return sellPrice;
     }
 
-    public void setSold(Long sold) {
-        this.sold = sold;
+    public void setSellPrice(Long sellPrice) {
+        this.sellPrice = sellPrice;
     }
 
-    public Long getPurchase() {
-        return purchase;
+    public String getDimension() {
+        return dimension;
     }
 
-    public void setPurchase(Long purchase) {
-        this.purchase = purchase;
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
     }
 
-    public String getDimensionType() {
-        return dimensionType;
-    }
 
-    public void setDimensionType(String dimensionType) {
-        this.dimensionType = dimensionType;
-    }
-
-    public BigDecimal getDefaultSize() {
-        return defaultSize;
-    }
-
-    public void setDefaultSize(BigDecimal defaultSize) {
-        this.defaultSize = defaultSize;
-    }
-
-    public String getSellType() {
-        return sellType;
-    }
-
-    public void setSellType(String sellType) {
-        this.sellType = sellType;
-    }
 
     public Long getTypeId() {
         return typeId;
@@ -79,17 +44,12 @@ public class ProductModal {
         this.typeId = typeId;
     }
 
-    @Override
-    public String toString() {
-        return "ProductModal{" +
-                "id=" + id +
-                ", productName='" + productName + '\'' +
-                ", sold=" + sold +
-                ", purchase=" + purchase +
-                ", dimensionType='" + dimensionType + '\'' +
-                ", defaultSize=" + defaultSize +
-                ", sellType='" + sellType + '\'' +
-                ", typeId=" + typeId +
-                '}';
+    public String getPathImage() {
+        return pathImage;
     }
+
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
+    }
+
 }
