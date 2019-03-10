@@ -1,0 +1,6 @@
+.hyperlink{
+    -fx-underline: true;
+}
+.label{
+    -fx-text-fill: #2b5797;
+}

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="524.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uz.dukon.controllers.application.product.content.OrderConfirmController">
+   <children>
+      <JFXRadioButton fx:id="bothTypeRadioBtn" layoutX="236.0" layoutY="67.0" text="Накд пул ва пластик">
+         <toggleGroup>
+            <ToggleGroup fx:id="paymentStatus" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="plasticRadioBtn" layoutX="135.0" layoutY="67.0" text="Пластик" toggleGroup="$paymentStatus" />
+      <JFXRadioButton fx:id="cashRadioBtn" layoutX="22.0" layoutY="68.0" text="Накд Пул" toggleGroup="$paymentStatus" />
+      <JFXTextField fx:id="cashTextField" layoutX="70.0" layoutY="124.0" prefHeight="25.0" prefWidth="160.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXTextField>
+      <Label fx:id="cashLabel" layoutX="70.0" layoutY="107.0" text="Накд пул">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="plasticTextField" layoutX="314.0" layoutY="124.0" prefHeight="25.0" prefWidth="160.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXTextField>
+      <Label fx:id="plasticLabel" layoutX="314.0" layoutY="107.0" text="Пластик тўлов микдори">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="cashImage" fitHeight="28.0" fitWidth="28.0" layoutX="42.0" layoutY="129.0">
+         <image>
+            <Image url="@/images/money.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="plasticImage" fitHeight="28.0" fitWidth="28.0" layoutX="285.0" layoutY="129.0">
+         <image>
+            <Image url="@/images/visa.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnAdd" buttonType="RAISED" defaultButton="true" layoutX="127.0" layoutY="355.0" prefHeight="37.0" prefWidth="100.0" ripplerFill="#15ff004f" style="-fx-background-color: #2b5797;" text="СОТИШ" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" cancelButton="true" layoutX="343.0" layoutY="355.0" prefHeight="37.0" prefWidth="100.0" ripplerFill="#f208174f" style="-fx-background-color: #da532c;" text="БЕКОР " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+
+      </JFXButton>
+      <Label layoutX="61.0" layoutY="220.0" prefHeight="20.0" prefWidth="107.0" text="Жами сумма:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="262.0" text="Тўланган Сумма:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalProductSumm" layoutX="207.0" layoutY="224.0" prefHeight="25.0" prefWidth="122.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="paidTotalSumm" layoutX="207.0" layoutY="262.0" prefHeight="25.0" prefWidth="139.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="301.0" prefHeight="25.0" prefWidth="122.0" text="Кайтим:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="change" layoutX="207.0" layoutY="301.0" prefHeight="25.0" prefWidth="139.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

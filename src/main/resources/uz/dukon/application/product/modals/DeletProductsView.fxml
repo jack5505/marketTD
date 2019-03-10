@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.controlsfx.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="549.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uz.dukon.controllers.application.product.content.DeletProductsController">
+   <children>
+      <JFXButton fx:id="btnAdd" layoutX="64.0" layoutY="331.0" prefHeight="47.0" prefWidth="187.0" ripplerFill="WHITE" style="-fx-background-color: #9370f1;" text="Ўчириш">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnCancel" layoutX="275.0" layoutY="331.0" prefHeight="47.0" prefWidth="187.0" ripplerFill="WHITE" style="-fx-background-color: #d36161;" text="Бекор килиш">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="productList" layoutX="64.0" layoutY="95.0" prefHeight="25.0" prefWidth="381.0" />
+      <Label layoutX="64.0" layoutY="59.0" text="Товарлар спискаси">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="info" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="271.0" prefHeight="35.0" prefWidth="381.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="64.0" layoutY="147.0" text="Товарлар категорияси (типи)">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="typeList" layoutX="64.0" layoutY="190.0" prefHeight="25.0" prefWidth="381.0" />
+   </children>
+</AnchorPane>

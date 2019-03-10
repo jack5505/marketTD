@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="195.0" prefWidth="485.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uz.dukon.controllers.application.product.content.FinishController">
+   <children>
+      <JFXButton fx:id="btn" layoutY="148.0" prefHeight="47.0" prefWidth="485.0" ripplerFill="WHITE" style="-fx-background-color: #9370f1;" text="Cаклаш">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="info" layoutX="114.0" layoutY="14.0" text="Товарнинг турини киризинг" textFill="#08ff15">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="115.0" layoutY="73.0" prefHeight="25.0" prefWidth="266.0" style="-fx-text-fill: #08ff15;" unFocusColor="#08ff15">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+   </children>
+</AnchorPane>

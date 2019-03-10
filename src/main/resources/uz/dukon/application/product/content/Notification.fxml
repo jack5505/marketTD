@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="134.0" prefWidth="350.0" style="-fx-background-color: whte; -fx-border-color: green;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uz.dukon.controllers.application.product.content.NotificationController">
+   <children>
+      <Label fx:id="warning" layoutX="58.0" layoutY="14.0" text="Хакикатдан хам ўчирмокчимисиз!">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="ok" layoutX="90.0" layoutY="67.0" prefHeight="25.0" prefWidth="50.0" text="Ха" />
+      <JFXButton fx:id="cancel" layoutX="197.0" layoutY="67.0" prefHeight="25.0" prefWidth="50.0" text="Йўк" />
+   </children>
+</AnchorPane>

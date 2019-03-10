@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="184.0" prefWidth="487.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uz.dukon.controllers.application.product.content.ExitController">
+   <children>
+      <ImageView fx:id="imgLogo" fitHeight="52.0" fitWidth="69.0" layoutX="69.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/images/imageForMenu/Attention_48px.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="166.0" layoutY="48.0" prefHeight="25.0" prefWidth="210.0" text="Дастурни тарк этиш ?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="yes" layoutX="136.0" layoutY="109.0" prefHeight="33.0" prefWidth="98.0" text="Ха">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/imageForMenu/Checkmark_48px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="no" layoutX="252.0" layoutY="109.0" prefHeight="33.0" prefWidth="98.0" text="Йўк">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/imageForMenu/Cancel 2_48px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

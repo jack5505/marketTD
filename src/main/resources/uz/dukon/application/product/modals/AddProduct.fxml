@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchor" prefHeight="668.0" prefWidth="689.0" style="-fx-background-color: rgb(232,232,232);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uz.dukon.controllers.application.product.content.AddProductModal">
+    <children>
+        <Label layoutX="70.0" layoutY="42.0" prefHeight="31.0" prefWidth="124.0" styleClass="w-label" text="Товарнинг номи">
+            <font>
+                <Font size="16.0" />
+            </font></Label>
+        <Label layoutX="72.0" layoutY="169.0" prefHeight="31.0" prefWidth="124.0" styleClass="w-label" text="Ўлчам микдори">
+            <font>
+                <Font size="16.0" />
+            </font></Label>
+        <Label layoutX="72.0" layoutY="104.0" prefHeight="31.0" prefWidth="124.0" styleClass="w-label" text="Сотилиш Бахоси">
+            <font>
+                <Font size="16.0" />
+            </font></Label>
+        <JFXTextField fx:id="productName" layoutX="226.0" layoutY="37.0" prefHeight="25.0" prefWidth="300.0" promptText="Творог">
+            <font>
+                <Font size="18.0" />
+            </font></JFXTextField>
+        <JFXTextField fx:id="dimensionCount" layoutX="231.0" layoutY="165.0" prefHeight="25.0" prefWidth="300.0" promptText="(метр,кг,шт)">
+            <font>
+                <Font size="18.0" />
+            </font></JFXTextField>
+        <JFXTextField fx:id="sold" layoutX="228.0" layoutY="100.0" prefHeight="25.0" prefWidth="300.0" promptText="6000">
+            <font>
+                <Font size="18.0" />
+            </font></JFXTextField>
+
+        <JFXButton fx:id="btnAdd" buttonType="RAISED" defaultButton="true" layoutX="226.0" layoutY="593.0" prefHeight="37.0" prefWidth="100.0" ripplerFill="#15ff004f" style="-fx-background-color: #2b5797;" text="КЎШИШ" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="btnCancel" buttonType="RAISED" cancelButton="true" layoutX="471.0" layoutY="593.0" prefHeight="37.0" prefWidth="100.0" ripplerFill="#f208174f" style="-fx-background-color: #da532c;" text="БЕКОР килиш" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+
+        </JFXButton>
+        <Label fx:id="fieldSell" layoutX="579.0" layoutY="193.0" text="Дарчани Тўлдиринг" textFill="#f20404" visible="false" />
+        <Label fx:id="fill1" layoutX="557.0" layoutY="42.0" text="*" textFill="RED">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="fill2" layoutX="556.0" layoutY="107.0" text="*" textFill="RED">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="fill3" layoutX="555.0" layoutY="172.0" text="*" textFill="RED">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="71.0" layoutY="283.0" prefHeight="31.0" prefWidth="124.0" styleClass="w-label" text="Товарнинг тури">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <JFXComboBox fx:id="types" layoutX="227.0" layoutY="283.0" prefHeight="25.0" prefWidth="300.0" promptText="Категория" styleClass="w-text-field">
+        </JFXComboBox>
+        <Button fx:id="addType" layoutX="547.0" layoutY="290.0" mnemonicParsing="false" text="Кўшиш">
+            <graphic>
+                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/imageForMenu/Plus_64px.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+      <Label layoutX="70.0" layoutY="348.0" prefHeight="31.0" prefWidth="151.0" styleClass="w-label" text="Товарнинг Расми:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="uploadImage" buttonType="RAISED" defaultButton="true" layoutX="245.0" layoutY="340.0" prefHeight="37.0" prefWidth="226.0" ripplerFill="#15ff004f" style="-fx-background-color: #2b5797;" text="РАСИМ ЮКЛАШ" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/Image File_48px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label fx:id="infoAboutProduct" layoutX="220.0" layoutY="553.0" prefHeight="25.0" prefWidth="384.0" text="Label">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <ImageView fx:id="img" fitHeight="137.0" fitWidth="280.0" layoutX="236.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="fill4" layoutX="555.0" layoutY="230.0" text="*" textFill="RED">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="dimensionQuantity" layoutX="231.0" layoutY="223.0" prefHeight="25.0" prefWidth="300.0" promptText="1,5 литирли Катик">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="72.0" layoutY="227.0" prefHeight="31.0" prefWidth="124.0" styleClass="w-label" text="Ўлчам хажми">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,50 @@
+.tool-bar{
+    -fx-padding: 2;
+}
+.sub-menu-button {
+    -fx-border-radius: 0;
+    -fx-background-color: #fff;
+    -fx-padding: 3;
+}
+.sub-menu-button-for-help
+{
+    -fx-border-radius: 0;
+    -fx-background-color: #E8E8E8;
+    -fx-padding: 3;
+
+}
+.sub-menu-button:hover {
+    -fx-border-radius: 0;
+    -fx-background-color: #dadada;
+    -fx-padding: 3;
+}
+
+.w-pagination {
+    -fx-page-information-visible:false;
+    /*-fx-skin: "com.sun.javafx.scene.control.skin.PaginationSkinErez";*/
+}
+.w-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2b5797;
+}
+.w-combo-box{
+    -fx-font-size: 12px;
+    -fx-prompt-text-fill: gray;
+}
+.w-text-field{
+    -fx-font-size: 12px;
+    -fx-prompt-text-fill: gray;
+}
+.w-button {
+    -fx-padding: 3;
+
+}
+
+.w-toolbar-btns {
+    -fx-start-margin: 10;
+}
+
+.w-purchase-debit {
+    -jfx-checked-color:red
+}
