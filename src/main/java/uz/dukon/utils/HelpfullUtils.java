@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import uz.dukon.controllers.model.ProductDtoList;
-import uz.dukon.controllers.model.ProductTable;
 import uz.dukon.controllers.newmodel.CartTable;
 
 import java.math.BigDecimal;
@@ -85,12 +84,12 @@ public class HelpfullUtils {
             }
         });
     }
-    public static void setCenterLong(TableColumn<ProductTable,Long> table)
+    public static void setCenterLong(TableColumn<ProductDtoList,Long> table)
     {
-        table.setCellFactory(new Callback<TableColumn<ProductTable, Long>, TableCell<ProductTable, Long>>() {
+        table.setCellFactory(new Callback<TableColumn<ProductDtoList, Long>, TableCell<ProductDtoList, Long>>() {
             @Override
-            public TableCell<ProductTable, Long> call(TableColumn<ProductTable, Long> param) {
-                TableCell<ProductTable,Long> cell = new TableCell<ProductTable,Long>(){
+            public TableCell<ProductDtoList, Long> call(TableColumn<ProductDtoList, Long> param) {
+                TableCell<ProductDtoList,Long> cell = new TableCell<ProductDtoList,Long>(){
                     @Override
                     protected void updateItem(Long item, boolean empty) {
                         super.updateItem(item, empty);

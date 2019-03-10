@@ -3,10 +3,12 @@ package uz.dukon.controllers.application.product.content;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import uz.dukon.App;
 import uz.dukon.controllers.application.widgets.WPopup;
 import uz.dukon.controllers.model.ProductDtoList;
@@ -33,6 +35,9 @@ public class ProductContentController implements Initializable
 
     @FXML
     private JFXButton editProduct;
+
+    @FXML
+    private JFXButton exit;
 
     @FXML
     private TableView<ProductDtoList> tableView;
@@ -70,7 +75,7 @@ public class ProductContentController implements Initializable
     }
 
     private void fillTable() {
-
+        tableView.getItems().addAll(productDtoListList);
     }
 
     private void events() {
@@ -79,6 +84,20 @@ public class ProductContentController implements Initializable
             new WPopup(FxmlUrl.Product.productModal,"Янги махсулот кўшиш").show();
         });
 
+        //o`chirish
+        deletProduct.setOnAction(event -> {
+
+        });
+        //o`zgartirish
+        editProduct.setOnAction(event -> {
+            if(!tableView.getSelectionModel().isEmpty()){
+                System.out.println("tanlandi");
+            }
+        });
+        exit.setOnAction(event -> {
+            Stage stage = (Stage)((Button)(event).getSource()).getScene().getWindow();
+            stage.close();
+        });
 
     }
 
@@ -92,5 +111,7 @@ public class ProductContentController implements Initializable
         HelpfullUtils.setCenterText(productDimenstionC);
         HelpfullUtils.setCenterGraphic(productImageC);
         HelpfullUtils.setCenterBigDecimal(productPriceC);
+        HelpfullUtils.setCenterLong(numC);
+
     }
 }
