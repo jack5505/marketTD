@@ -118,11 +118,15 @@ public class NewSaleController implements Initializable
             }
             else
             {
-                cardTable.getItems().forEach(cartTable -> {
-                    if(cartTable.getOrderedId() == event.getCartTable().getOrderedId()){
-                        cartTable = event.getCartTable();
+                CartTable cartTable = new CartTable();
+                for (CartTable table : cardTable.getItems()) {
+                    if(table.getOrderedId() == event.getCartTable().getOrderedId()){
+                        cartTable = table;
+                        break;
                     }
-                });
+                }
+                cardTable.getItems().remove(cartTable);
+                cardTable.getItems().add(event.getCartTable());
                 calcTotal();
             }
         });
@@ -366,7 +370,7 @@ public class NewSaleController implements Initializable
             System.out.println(cartTable1[0]);
             WPopup wPopup1 = new WPopup(FxmlUrl.Product.count,"");
             CountController countController1 = wPopup1.getController();
-            countController.prepareToAdd(cartTable1[0]);
+            countController1.prepareToEdit(cartTable1[0]);
             wPopup1.show();
         });
         HBox hBox = new HBox();

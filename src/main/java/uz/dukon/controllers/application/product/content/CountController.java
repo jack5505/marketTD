@@ -27,8 +27,32 @@ public class CountController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+            accept.setOnAction(event -> {
+                        // ok bosiladi shorda
+        System.out.println(textField.getText());
+        if(this.cartTable.getChange() == true){
+            editIt();
+        }
+        else{
+            saveIt();
+        }
+        AddCartEvent addCartEvent = new AddCartEvent(AddCartEvent.ANY,this.cartTable);
+        App.eventBus.fireEvent(addCartEvent);
+        Stage stage = (Stage) accept.getScene().getWindow();
+        stage.close();
+            });
     }
+
+    private void saveIt() {
+        this.cartTable.setCountP(new BigDecimal(textField.getText()));
+        cartTable.setTotalSumm(new BigDecimal(cartTable.getSellPrice()).multiply(cartTable.getCountP()));
+    }
+
+    private void editIt() {
+        this.cartTable.setCountP(new BigDecimal(textField.getText()));
+        cartTable.setTotalSumm(new BigDecimal(cartTable.getSellPrice()).multiply(cartTable.getCountP()));
+    }
+
     public  void numAction(ActionEvent actionEvent){
         int x=Integer.parseInt(((Button)actionEvent.getSource()).getId());
         if(x==1){
@@ -82,29 +106,28 @@ public class CountController implements Initializable {
         }
     }
     public void acceptAction(ActionEvent actionEvent) {
-        // ok bosiladi shorda
-        System.out.println(textField.getText());
-        if(this.cartTable.getChange() == false)
-            //TODO here is big issue which I cann't solve
-             this.cartTable.setCountP(new BigDecimal(textField.getText()));
-//        System.out.println(this.cartTable.getChange() ? "Changed" : "Not Changed");
-        System.out.println(this.cartTable.getSellPrice()+ " " + cartTable.getCountP());
-        cartTable.setTotalSumm(new BigDecimal(cartTable.getSellPrice()).multiply(cartTable.getCountP()));
-        AddCartEvent addCartEvent = new AddCartEvent(AddCartEvent.ANY,this.cartTable);
-        App.eventBus.fireEvent(addCartEvent);
-        Stage stage = (Stage) accept.getScene().getWindow();
-        stage.close();
+//        // ok bosiladi shorda
+//        System.out.println(textField.getText());
+//            //TODO here is big issue which I cann't solve
+//             this.cartTable.setCountP(new BigDecimal(textField.getText()));
+////        System.out.println(this.cartTable.getChange() ? "Changed" : "Not Changed");
+//        System.out.println(this.cartTable.getSellPrice()+ " " + cartTable.getCountP());
+//        cartTable.setTotalSumm(new BigDecimal(cartTable.getSellPrice()).multiply(cartTable.getCountP()));
+//        AddCartEvent addCartEvent = new AddCartEvent(AddCartEvent.ANY,this.cartTable);
+//        App.eventBus.fireEvent(addCartEvent);
+//        Stage stage = (Stage) accept.getScene().getWindow();
+//        stage.close();
     }
 
     public void prepareToAdd(CartTable cartTable) {
         this.cartTable = cartTable;
         this.cartTable.setChange(false);
-        if(this.cartTable.getCountP() != null){
-            this.cartTable.setChange(true);
-            System.out.println("EDITED");
-            System.out.println(this.cartTable);
-            this.cartTable.setCountP(null);
-        }
-
+    }
+    public void prepareToEdit(CartTable cartTable){
+        this.cartTable = cartTable;
+        this.cartTable.setChange(true);
+        textField.setText(cartTable.getCountP().toString());
+        System.out.println(textField.getText());
+        System.out.println(this.cartTable);
     }
 }
