@@ -108,11 +108,23 @@ public class NewSaleController implements Initializable
          */
         App.eventBus.addEventHandler(AddCartEvent.ANY,event ->
         {
+            if(!event.getCartTable().getChange())
+            {
             //tablitsaga yozilib duribdi
             cardTable.getItems().add(event.getCartTable());
             //biza danniy atib yuvaradon listga yozilib duribdi
             soldItems.add(event.getCartTable());
             calcTotal();
+            }
+            else
+            {
+                cardTable.getItems().forEach(cartTable -> {
+                    if(cartTable.getOrderedId() == event.getCartTable().getOrderedId()){
+                        cartTable = event.getCartTable();
+                    }
+                });
+                calcTotal();
+            }
         });
 
         //this is after saling products into db it clear cardTable and hashmap
@@ -341,6 +353,21 @@ public class NewSaleController implements Initializable
             });
             cardTable.getItems().remove(cartTable1[0]);
             calcTotal();
+        });
+        edit.setOnAction(event -> {
+            int id = Integer.parseInt(((Button)event.getSource()).getId());
+            final CartTable[] cartTable1 = {new CartTable()};
+            cardTable.getItems().forEach(cartTable2 -> {
+                if(cartTable2.getOrderedId() == id)
+                {
+                    cartTable1[0] = cartTable2;
+                }
+            });
+            System.out.println(cartTable1[0]);
+            WPopup wPopup1 = new WPopup(FxmlUrl.Product.count,"");
+            CountController countController1 = wPopup1.getController();
+            countController.prepareToAdd(cartTable1[0]);
+            wPopup1.show();
         });
         HBox hBox = new HBox();
         hBox.getChildren().add(deleted);

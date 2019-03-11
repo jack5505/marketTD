@@ -87,10 +87,10 @@ public class CartTable {
         this.change = change;
     }
 
-    @Override
-    public String toString() {
-        return nameP+" "+typeDimension;
-    }
+//    @Override
+//    public String toString() {
+//        return nameP+" "+typeDimension;
+//    }
 
     public int getOrderedId() {
         return orderedId;
@@ -124,4 +124,21 @@ public class CartTable {
         this.boxes = boxes;
     }
 
+    @Override
+    public String toString() {
+        return "CartTable{" +
+                "id=" + id +
+                ", nameP='" + nameP + '\'' +
+                ", countP=" + countP +
+                ", sellPrice=" + sellPrice +
+                ", totalSumm=" + totalSumm +
+                ", typeDimension='" + typeDimension + '\'' +
+                ", productId=" + productId +
+                ", change=" + change +
+                ", sellType='" + sellType + '\'' +
+                ", typeId=" + typeId +
+                ", orderedId=" + orderedId +
+                ", boxes=" + boxes +
+                '}';
+    }
 }

@@ -27,7 +27,7 @@ public class CountController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cartTable = new CartTable();
+
     }
     public  void numAction(ActionEvent actionEvent){
         int x=Integer.parseInt(((Button)actionEvent.getSource()).getId());
@@ -83,8 +83,12 @@ public class CountController implements Initializable {
     }
     public void acceptAction(ActionEvent actionEvent) {
         // ok bosiladi shorda
-
-        cartTable.setCountP(new BigDecimal(textField.getText()));
+        System.out.println(textField.getText());
+        if(this.cartTable.getChange() == false)
+            //TODO here is big issue which I cann't solve
+             this.cartTable.setCountP(new BigDecimal(textField.getText()));
+//        System.out.println(this.cartTable.getChange() ? "Changed" : "Not Changed");
+        System.out.println(this.cartTable.getSellPrice()+ " " + cartTable.getCountP());
         cartTable.setTotalSumm(new BigDecimal(cartTable.getSellPrice()).multiply(cartTable.getCountP()));
         AddCartEvent addCartEvent = new AddCartEvent(AddCartEvent.ANY,this.cartTable);
         App.eventBus.fireEvent(addCartEvent);
@@ -94,5 +98,13 @@ public class CountController implements Initializable {
 
     public void prepareToAdd(CartTable cartTable) {
         this.cartTable = cartTable;
+        this.cartTable.setChange(false);
+        if(this.cartTable.getCountP() != null){
+            this.cartTable.setChange(true);
+            System.out.println("EDITED");
+            System.out.println(this.cartTable);
+            this.cartTable.setCountP(null);
+        }
+
     }
 }
