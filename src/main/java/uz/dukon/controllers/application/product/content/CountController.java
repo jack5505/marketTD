@@ -6,7 +6,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import uz.dukon.App;
+import uz.dukon.controllers.application.product.events.AddCartEvent;
+import uz.dukon.controllers.newmodel.CartTable;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,10 +23,11 @@ public class CountController implements Initializable {
     @FXML
     private TextField textField;
     private  boolean dot=false;
+    private CartTable cartTable;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        cartTable = new CartTable();
     }
     public  void numAction(ActionEvent actionEvent){
         int x=Integer.parseInt(((Button)actionEvent.getSource()).getId());
@@ -79,10 +84,15 @@ public class CountController implements Initializable {
     public void acceptAction(ActionEvent actionEvent) {
         // ok bosiladi shorda
 
-
+        cartTable.setCountP(new BigDecimal(textField.getText()));
+        cartTable.setTotalSumm(new BigDecimal(cartTable.getSellPrice()).multiply(cartTable.getCountP()));
+        AddCartEvent addCartEvent = new AddCartEvent(AddCartEvent.ANY,this.cartTable);
+        App.eventBus.fireEvent(addCartEvent);
         Stage stage = (Stage) accept.getScene().getWindow();
         stage.close();
+    }
 
-
+    public void prepareToAdd(CartTable cartTable) {
+        this.cartTable = cartTable;
     }
 }

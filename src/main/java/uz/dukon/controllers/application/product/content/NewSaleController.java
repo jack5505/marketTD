@@ -17,7 +17,6 @@ import javafx.stage.StageStyle;
 import uz.dukon.App;
 import uz.dukon.controllers.application.product.events.AddCartEvent;
 import uz.dukon.controllers.application.product.events.AddProductEvent;
-import uz.dukon.controllers.application.product.events.DeleteCartProductEvent;
 import uz.dukon.controllers.application.product.events.StartAgainEvent;
 import uz.dukon.controllers.application.product.print.Print;
 import uz.dukon.controllers.application.product.print.PrintModel;
@@ -109,48 +108,11 @@ public class NewSaleController implements Initializable
          */
         App.eventBus.addEventHandler(AddCartEvent.ANY,event ->
         {
-            if(event.getCartTable().getChange())
-            {
-
-                final CartTable[] cartTable = {new CartTable()};
-                cardTable.getItems().forEach(data ->
-                {
-                    if(data.getProductId() == event.getCartTable().getProductId() && data.getOrderedId() == event.getCartTable().getOrderedId()){
-                       cartTable[0] = data;
-                    }
-                });
-
-                cardTable.getItems().remove(cartTable[0]);
-                soldItems.remove(cartTable[0]);
-                cardTable.getItems().add(event.getCartTable());
-                soldItems.add(event.getCartTable());
-                calcTotal();
-            }
-            else
-            {
-                //tablitsaga yozilib duribdi
+            //tablitsaga yozilib duribdi
             cardTable.getItems().add(event.getCartTable());
             //biza danniy atib yuvaradon listga yozilib duribdi
             soldItems.add(event.getCartTable());
             calcTotal();
-            }
-        });
-          /*
-            When deleted cart product from tableView
-             this event comes from OperationWithCartController
-            */
-        App.eventBus.addEventHandler(DeleteCartProductEvent.ANY,event ->
-        {
-
-            final CartTable[] cartTable = {new CartTable()};
-             cardTable.getItems().forEach(data -> {
-               if(data.equals(event.getCartTable())){
-                  cartTable[0] = data;
-               }
-           });
-             cardTable.getItems().remove(cartTable[0]);
-             soldItems.remove(cartTable[0]);
-             calcTotal();
         });
 
         //this is after saling products into db it clear cardTable and hashmap
@@ -349,7 +311,15 @@ public class NewSaleController implements Initializable
         WPopup wPopup = new WPopup(FxmlUrl.Product.count,"");
         wPopup.setStageStyle(StageStyle.UNDECORATED);
         CountController countController = wPopup.getController();
+        Long productId = Long.parseLong(button.getId());
+        System.out.println(productId);
         CartTable cartTable = new CartTable();
+        for (CartTable table : productList) {
+            if(table.getProductId().equals(productId)){
+                cartTable = table;
+                break;
+            }
+        }
         Button deleted = new Button("",new ImageView(
                 new Image(getClass().getResourceAsStream("/images/delete1.png"))));
         deleted.setStyle("-fx-padding: 5");
@@ -370,14 +340,14 @@ public class NewSaleController implements Initializable
                 }
             });
             cardTable.getItems().remove(cartTable1[0]);
+            calcTotal();
         });
         HBox hBox = new HBox();
         hBox.getChildren().add(deleted);
         hBox.getChildren().add(edit);
-        cartTable.setNameP("hello"+orderedId);
         cartTable.setBoxes(hBox);
-        cardTable.getItems().add(cartTable);
         cartTable.setOrderedId(orderedId);
+        countController.prepareToAdd(cartTable);
         wPopup.show();
 
     }

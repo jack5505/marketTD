@@ -123,4 +123,5 @@ public class CartTable {
     public void setBoxes(HBox boxes) {
         this.boxes = boxes;
     }
+
 }
