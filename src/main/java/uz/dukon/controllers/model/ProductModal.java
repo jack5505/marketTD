@@ -9,6 +9,7 @@ public class ProductModal {
     private String dimension;
     private Long typeId;
     private String pathImage;
+    private Long productId;
 
     public String getProductName() {
         return productName;
@@ -34,8 +35,6 @@ public class ProductModal {
         this.dimension = dimension;
     }
 
-
-
     public Long getTypeId() {
         return typeId;
     }
@@ -52,4 +51,11 @@ public class ProductModal {
         this.pathImage = pathImage;
     }
 
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 }

@@ -34,6 +34,8 @@ public class ProductServiceImpl  implements ProductService
     {
         int diff = productRepository.cnt();
         ProductEntity productEntity = new ProductEntity();
+        if(productModal.getProductId() != null)
+            productEntity.setId(productModal.getProductId());
         productEntity.setName(productModal.getProductName());
         productEntity.setTypeId(productModal.getTypeId());
         productEntity.setSellPrice(productModal.getSellPrice());
@@ -129,15 +131,20 @@ public class ProductServiceImpl  implements ProductService
     @Override
     public void getProductsForContent(List<ProductDtoList> productDtoListList) {
         List<ProductEntity> productEntities = productRepository.findAll();
-        productEntities.forEach(productEntity -> {
-            ProductDtoList productDtoList = new ProductDtoList();
-            productDtoList.setId((long) (productDtoListList.size() + 1));
-            productDtoList.setProductName(productEntity.getName());
-            productDtoList.setDimension(productEntity.getDimensionType());
-            productDtoList.setSellPrice(productEntity.getSellPrice());
-            productDtoList.setPathImage(productEntity.getImagePath());
+        productEntities.forEach(productEntity ->
+        {
+            if(!productEntity.isDeleted()) {
+                ProductDtoList productDtoList = new ProductDtoList();
+                productDtoList.setId((long) (productDtoListList.size() + 1));
+                productDtoList.setProductName(productEntity.getName());
+                productDtoList.setDimension(productEntity.getDimensionType());
+                productDtoList.setSellPrice(productEntity.getSellPrice());
+                productDtoList.setPathImage(productEntity.getImagePath());
+                productDtoList.setProductId(productEntity.getId());
+                productDtoList.setTypeId(productEntity.getTypeId());
 //            productDtoList.setSellPrice(new BigDecimal(productEntity.getSellPrice()));
-            productDtoListList.add(productDtoList);
+                productDtoListList.add(productDtoList);
+            }
         });
     }
 

@@ -8,11 +8,13 @@ import javafx.scene.image.ImageView;
 public class ProductDtoList {
     private Long id;
     private String productName;
-    private String type;
+    private Long typeId;
     private String dimension;
     private Long sellPrice;
     private String pathImage;
     private ImageView image;
+    private Long productId;
+
 
     public Long getId() {
         return id;
@@ -30,12 +32,12 @@ public class ProductDtoList {
         this.productName = productName;
     }
 
-    public String getType() {
-        return type;
+    public Long getTypeId() {
+        return typeId;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
     }
 
     public String getDimension() {
@@ -68,5 +70,13 @@ public class ProductDtoList {
 
     public void setPathImage(String pathImage) {
         this.pathImage = pathImage;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }

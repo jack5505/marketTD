@@ -69,6 +69,8 @@ public class ProductContentController implements Initializable
         events();
         App.ctx.getBean(ProductService.class).getProductsForContent(productDtoListList);
         fillTable();
+        deletProduct.setDisable(true);
+        editProduct.setDisable(true);
 
 
 
@@ -110,7 +112,13 @@ public class ProductContentController implements Initializable
         //o`zgartirish
         editProduct.setOnAction(event -> {
             if(!tableView.getSelectionModel().isEmpty()){
-                System.out.println("tanlandi");
+                System.out.println(tableView.getSelectionModel().getSelectedItem().getProductName());
+                ProductDtoList productDtoList = tableView.getSelectionModel().getSelectedItem();
+                System.out.println(productDtoList.getProductId());
+                WPopup wPopup = new WPopup(FxmlUrl.Product.productModal,"Махсулотни Ўзгартириш");
+                AddProductModal addProductModal = wPopup.getController();
+                addProductModal.setEditProduct(productDtoList);
+                wPopup.show();
             }
         });
 
@@ -120,6 +128,10 @@ public class ProductContentController implements Initializable
             App.eventBus.fireEvent(addProductEvent);
             Stage stage = (Stage)((Button)(event).getSource()).getScene().getWindow();
             stage.close();
+        });
+        tableView.setOnMouseClicked(event -> {
+            deletProduct.setDisable(false);
+            editProduct.setDisable(false);
         });
 
     }

@@ -20,6 +20,7 @@ import uz.dukon.controllers.application.product.events.AddProductEvent;
 import uz.dukon.controllers.application.product.events.AddTypeEvent;
 import uz.dukon.controllers.application.widgets.FilterForTextField;
 import uz.dukon.controllers.application.widgets.WPopup;
+import uz.dukon.controllers.model.ProductDtoList;
 import uz.dukon.controllers.model.ProductModal;
 import uz.dukon.controllers.model.TypeDto;
 import uz.dukon.service.ProductService;
@@ -152,7 +153,10 @@ public class AddProductModal implements Initializable
             if(allFilled())
             {
                 App.ctx.getBean(ProductService.class).create(productModal);
-                infoAboutProduct.setText("Товар Кўшилди: " + productName.getText());
+                if(productModal.getProductId() == null)
+                    infoAboutProduct.setText("Товар Кўшилди: " + productName.getText());
+                else
+                    infoAboutProduct.setText("Товар ўзгартирилди" + productName.getText());
                 infoAboutProduct.setVisible(true);
                 clear();
             }
@@ -215,6 +219,23 @@ public class AddProductModal implements Initializable
         Stage stage = (Stage)((Button)(event).getSource()).getScene().getWindow();
         stage.close();
     }
+
+    public void setEditProduct(ProductDtoList productDtoList){
+         productModal.setProductId(productDtoList.getProductId());
+         productName.setText(productDtoList.getProductName());
+         sold.setText(productDtoList.getSellPrice().toString());
+         dimensionQuantity.setText(productDtoList.getDimension());
+         Image image = new Image("file:///"+productDtoList.getPathImage());
+         img.setImage(image);
+         productModal.setPathImage(productDtoList.getPathImage());
+         types.getItems().forEach(typeDto -> {
+             if(typeDto.getTypeId().equals(productDtoList.getTypeId())){
+                 types.getSelectionModel().select(typeDto);
+             }
+         });
+
+    }
+
 
 
 
