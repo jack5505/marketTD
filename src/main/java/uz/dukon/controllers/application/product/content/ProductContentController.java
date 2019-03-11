@@ -93,7 +93,12 @@ public class ProductContentController implements Initializable
     private void events() {
         addProduct.setOnAction(event -> {
             //open new Add window for new product
-            new WPopup(FxmlUrl.Product.productModal,"Янги махсулот кўшиш").show();
+        WPopup wPopup =  new WPopup(FxmlUrl.Product.productModal,"Янги махсулот кўшиш");
+        wPopup.getStage().setOnCloseRequest(event1 -> {
+            AddProductEvent addProductEvent = new AddProductEvent(AddProductEvent.ANY);
+            App.eventBus.fireEvent(addProductEvent);
+        });
+        wPopup.show();
         });
 
         //After adding some products
@@ -107,7 +112,13 @@ public class ProductContentController implements Initializable
 
         //o`chirish
         deletProduct.setOnAction(event -> {
-
+            WPopup wPopup = new WPopup(FxmlUrl.Product.delete,"");
+            Stage stage = wPopup.getStage();
+            stage.setOnCloseRequest(event1 -> {
+                AddProductEvent addProductEvent = new AddProductEvent(AddProductEvent.ANY);
+                App.eventBus.fireEvent(addProductEvent);
+            });
+            wPopup.show();
         });
         //o`zgartirish
         editProduct.setOnAction(event -> {
