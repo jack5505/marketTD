@@ -127,6 +127,8 @@ public class NewSaleController implements Initializable
                 }
                 cardTable.getItems().remove(cartTable);
                 cardTable.getItems().add(event.getCartTable());
+                soldItems.remove(cartTable);
+                soldItems.add(event.getCartTable());
                 calcTotal();
             }
         });
@@ -356,6 +358,7 @@ public class NewSaleController implements Initializable
                 }
             });
             cardTable.getItems().remove(cartTable1[0]);
+            soldItems.remove(cartTable1[0]);
             calcTotal();
         });
         edit.setOnAction(event -> {
