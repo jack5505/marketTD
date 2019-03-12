@@ -65,6 +65,9 @@ public class TotalReportController implements Initializable {
     @FXML
     private Label totalValue;
 
+    @FXML
+    private JFXButton pieChart;
+
     //bu jami sotilgan tovarlar summasi
     private BigDecimal totalMarkPrice;
 
@@ -119,6 +122,17 @@ public class TotalReportController implements Initializable {
                 askDeletedController.deleteReport();
                 wPopup.show();
             });
+
+        });
+
+        //Call Pie Chart
+        pieChart.setOnAction(event ->
+        {
+
+            WPopup wPopup = new WPopup(FxmlUrl.Product.pieChartView,"");
+            PieChartController pieChartController = wPopup.getController();
+            pieChartController.prepareToShow(tablesProta,startDate.getValue(),endDate.getValue());
+            wPopup.show();
 
         });
     }

@@ -60,5 +60,17 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
+      <JFXButton fx:id="pieChart" buttonType="RAISED" defaultButton="true" layoutX="756.0" layoutY="57.0" prefHeight="37.0" prefWidth="133.0" ripplerFill="#15ff004f" style="-fx-background-color: #2b5797;" text="ГРАФИК" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/Purchase Order_24px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

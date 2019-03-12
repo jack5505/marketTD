@@ -23,6 +23,7 @@ public interface FxmlUrl {
         String delete = "/uz/dukon/application/product/modals/DeletProductsView.fxml";
         String count = "/uz/dukon/application/product/modals/count.fxml";
         String productsView = "/uz/dukon/application/product/content/ProductContent.fxml";
+        String pieChartView = "/uz/dukon/application/product/content/ReportPieChart.fxml";
     }
     interface Print{
         String path = new File("").getAbsolutePath();
