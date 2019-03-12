@@ -57,7 +57,7 @@ public class TotalReportController implements Initializable {
     private TableColumn<ReportData,BigDecimal>  columnTotal;
 
     @FXML
-    private TableColumn<ReportData,BigDecimal> totalMetirP;
+    private TableColumn<ReportData,String> totalMetirP;
 
     private List<ReportData> tablesProta;
 
@@ -77,7 +77,7 @@ public class TotalReportController implements Initializable {
         startDate.setValue(LocalDate.now());
         endDate.setValue(LocalDate.now());
         tablesProta = App.ctx.getBean(TransactionsService.class).reportDataFill(startDate.getValue(),endDate.getValue());
-//        generateTablesData();
+        generateTablesData();
 
 
 
@@ -86,13 +86,11 @@ public class TotalReportController implements Initializable {
     private void generateTablesData() {
         tablesProta.forEach(reportData -> {
             ReportData reportData1 = new ReportData();
-            reportData1.setId((long) (tableReport.getItems().size() + 1));
+            reportData1.setId(reportData.getId());
             reportData1.setTotalPrice(reportData.getTotalPrice());
             reportData1.setProductName(reportData.getProductName());
-            if(reportData.getTotalMetirP() != null)
-                reportData1.setTotalMetirToShow(reportData.getTotalMetirP().toString() + " "+reportData.getDimensionType());
-            if(reportData.getCount() != null)
-                  reportData1.setCountToShow(reportData.getCount().toString());
+            reportData1.setCountToShow(reportData.getCountToShow());
+            reportData1.setTotalMetirToShow(reportData.getDimensionType());
             totalMarkPrice = totalMarkPrice.add(reportData.getTotalPrice());
             tableReport.getItems().add(reportData1);
         });
@@ -130,7 +128,7 @@ public class TotalReportController implements Initializable {
         columnProductN.setCellValueFactory(new PropertyValueFactory<ReportData, String>("productName"));
         columnCount.setCellValueFactory(new PropertyValueFactory<ReportData, String>("countToShow"));
         columnTotal.setCellValueFactory(new PropertyValueFactory<ReportData, BigDecimal>("totalPrice"));
-        totalMetirP.setCellValueFactory(new PropertyValueFactory<ReportData, BigDecimal>("totalMetirToShow"));
+        totalMetirP.setCellValueFactory(new PropertyValueFactory<ReportData, String>("totalMetirToShow"));
         totalValue.setText("0");
     }
 }

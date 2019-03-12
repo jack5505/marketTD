@@ -15,11 +15,13 @@ import java.util.List;
  */
 public interface TransactionRepository  extends JpaRepository<TransactionEntity,Long>
 {
-    @Query(value = "select productid,name,dimensiontype,productcount,\n" +
-            "producttotalsoldprice, totaldimension from transactionss inner join productentity \n" +
-            "on productentity.id = transactionss.productid\n" +
-            " where transactionss.create_date >= (:startDate) and transactionss.create_date <= (:endDate) and transactionss.deleted = false",nativeQuery = true)
+    @Query(value = "select productid, name,dimensiontype,sum(productcount) as totalcount,\n" +
+            "            sum(producttotalsoldprice) as totalSum from transactionss left join productentity \n" +
+            "            on productentity.id = transactionss.productid\n" +
+            "             where transactionss.create_date >= (:startDate) and transactionss.create_date <= (:endDate) and transactionss.deleted = false group by productid,name,dimensiontype",nativeQuery = true)
     List<Object[]> reportForTable (@Param("startDate")LocalDate startDate, @Param("endDate")LocalDate endDate);
+
+
 
     @Modifying
     @Transactional

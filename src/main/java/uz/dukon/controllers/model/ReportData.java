@@ -11,7 +11,7 @@ public class ReportData {
     private BigDecimal count;
     private BigDecimal totalPrice;
     private String dimensionType;
-    private String countToShow;
+    private BigDecimal countToShow;
     private BigDecimal totalMetirP;
     private String totalMetirToShow;
 
@@ -55,11 +55,11 @@ public class ReportData {
         this.dimensionType = dimensionType;
     }
 
-    public String getCountToShow() {
+    public BigDecimal getCountToShow() {
         return countToShow;
     }
 
-    public void setCountToShow(String countToShow) {
+    public void setCountToShow(BigDecimal countToShow) {
         this.countToShow = countToShow;
     }
 
