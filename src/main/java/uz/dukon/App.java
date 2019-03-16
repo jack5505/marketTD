@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -36,7 +35,7 @@ public class App extends Application {
             primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
             primaryStage.centerOnScreen();
-            primaryStage.getIcons().add(new Image("/images/iconss.png"));
+//            primaryStage.getIcons().add(new Image("/images/iconss.png"));
             primaryStage.show();
 
         } catch (IOException ex) {

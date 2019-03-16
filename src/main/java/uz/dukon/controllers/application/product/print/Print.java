@@ -18,7 +18,7 @@ public class Print {
         String printName = null;
         String path = "";
         System.out.println(path);
-        path ="c:\\Program Files\\easySqlad\\report.jasper";
+        path ="c:\\Program Files\\easySqlad\\tilloDomor.jasper";
         JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(list);
         HashMap hashMap = new HashMap();
         try {
