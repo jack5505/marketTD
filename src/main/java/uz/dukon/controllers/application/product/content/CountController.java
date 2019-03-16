@@ -26,14 +26,24 @@ public class CountController implements Initializable {
     private CartTable cartTable;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)
+    {
+
             accept.setOnAction(event -> {
                         // ok bosiladi shorda
-        System.out.println(textField.getText());
-        if(this.cartTable.getChange() == true){
+        if(textField.getText().isEmpty() || textField.getText().equals("0")){
+            Stage stage = (Stage)((Button)(event).getSource()).getScene().getWindow();
+            stage.close();
+            cartTable.setDontAdd(true);
+        }
+        else if(this.cartTable.getChange() == true)
+        {
+            cartTable.setDontAdd(false);
             editIt();
         }
-        else{
+        else
+        {
+            cartTable.setDontAdd(false);
             saveIt();
         }
         AddCartEvent addCartEvent = new AddCartEvent(AddCartEvent.ANY,this.cartTable);
@@ -127,7 +137,6 @@ public class CountController implements Initializable {
         this.cartTable = cartTable;
         this.cartTable.setChange(true);
         textField.setText(cartTable.getCountP().toString());
-        System.out.println(textField.getText());
-        System.out.println(this.cartTable);
+
     }
 }

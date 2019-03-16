@@ -20,6 +20,9 @@ public class CartTable {
     private Long typeId;
     private int orderedId;
     private HBox boxes;
+    private boolean dontAdd;
+    private String imageUrl;
+
 
 
 
@@ -86,7 +89,7 @@ public class CartTable {
     public void setChange(Boolean change) {
         this.change = change;
     }
-
+//
 //    @Override
 //    public String toString() {
 //        return nameP+" "+typeDimension;
@@ -124,6 +127,22 @@ public class CartTable {
         this.boxes = boxes;
     }
 
+    public boolean isDontAdd() {
+        return dontAdd;
+    }
+
+    public void setDontAdd(boolean dontAdd) {
+        this.dontAdd = dontAdd;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "CartTable{" +
@@ -139,6 +158,8 @@ public class CartTable {
                 ", typeId=" + typeId +
                 ", orderedId=" + orderedId +
                 ", boxes=" + boxes +
+                ", dontAdd=" + dontAdd +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

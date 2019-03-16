@@ -48,7 +48,6 @@ public class AddProductModal implements Initializable
     private JFXTextField sold;
 
 
-
     @FXML
     private JFXComboBox<TypeDto> types;
 
@@ -167,7 +166,6 @@ public class AddProductModal implements Initializable
         //Cancel button
         btnCancel.setOnAction(event -> {
             close(event);
-            System.out.println("boshla");
             AddProductEvent addProductEvent = new AddProductEvent(AddProductEvent.ANY);
             App.eventBus.fireEvent(addProductEvent);
         });

@@ -68,6 +68,7 @@ public class ProductServiceImpl  implements ProductService
             productCombo.setTypeDimension(productEntity.getDimensionType());
             productCombo.setSellPrice(productEntity.getSellPrice());
             productCombo.setTypeId(productEntity.getTypeId());
+            productCombo.setImageUrl(productEntity.getImagePath());
             //berda barilgan tovarni defaultsizeni tekshiramiz null amaslikina olajaqda
             list.add(productCombo);
             }

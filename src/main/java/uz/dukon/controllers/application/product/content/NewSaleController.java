@@ -108,7 +108,7 @@ public class NewSaleController implements Initializable
          */
         App.eventBus.addEventHandler(AddCartEvent.ANY,event ->
         {
-            if(!event.getCartTable().getChange())
+            if(!event.getCartTable().getChange() && !event.getCartTable().isDontAdd())
             {
             //tablitsaga yozilib duribdi
             cardTable.getItems().add(event.getCartTable());
@@ -116,7 +116,7 @@ public class NewSaleController implements Initializable
             soldItems.add(event.getCartTable());
             calcTotal();
             }
-            else
+            else if(!event.getCartTable().isDontAdd())
             {
                 CartTable cartTable = new CartTable();
                 for (CartTable table : cardTable.getItems()) {
@@ -296,7 +296,7 @@ public class NewSaleController implements Initializable
                     Button button = new Button();
                     button.setId(""+createMenu.get(typeDto.getTypeId()).get(data).getProductId());
                     button.setText(createMenu.get(typeDto.getTypeId()).get(data).getNameP());
-                    String s = "C:/images/images1.jpg";
+                    String s = createMenu.get(typeDto.getTypeId()).get(data).getImageUrl();
                     String temp = "file:///";
                     temp+=s;
 //                    button.setStyle("-fx-background-image: url("+temp+")");
@@ -369,7 +369,6 @@ public class NewSaleController implements Initializable
                     cartTable1[0] = cartTable2;
                 }
             });
-            System.out.println(cartTable1[0]);
             WPopup wPopup1 = new WPopup(FxmlUrl.Product.count,"");
             CountController countController1 = wPopup1.getController();
             countController1.prepareToEdit(cartTable1[0]);
