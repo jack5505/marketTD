@@ -7,20 +7,21 @@ import java.math.BigDecimal;
  */
 public class PrintModel
 {
-    private Long id;
+
     private Long num;
-    private String productName;
-    private BigDecimal totalSumma;
     private BigDecimal paidSumma;
-    private BigDecimal productCount;
     private String dimension;
     private Long price;
-    private BigDecimal totalPrice;
     private BigDecimal change;
     private BigDecimal productSize;
     private BigDecimal totalMetr;
     private BigDecimal total;
-
+    //need ones
+    private String name;
+    private BigDecimal jami;
+    private Long id;
+    private BigDecimal quantity;
+    private BigDecimal summa;
 
     public Long getId() {
         return id;
@@ -30,20 +31,20 @@ public class PrintModel
         this.id = id;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public BigDecimal getTotalSumma() {
-        return totalSumma;
+    public BigDecimal getJami() {
+        return jami;
     }
 
-    public void setTotalSumma(BigDecimal totalSumma) {
-        this.totalSumma = totalSumma;
+    public void setJami(BigDecimal jami) {
+        this.jami = jami;
     }
 
     public BigDecimal getPaidSumma() {
@@ -54,12 +55,12 @@ public class PrintModel
         this.paidSumma = paidSumma;
     }
 
-    public BigDecimal getProductCount() {
-        return productCount;
+    public BigDecimal getQuantity() {
+        return quantity;
     }
 
-    public void setProductCount(BigDecimal productCount) {
-        this.productCount = productCount;
+    public void setQuantity(BigDecimal quantity) {
+        this.quantity = quantity;
     }
 
     public String getDimension() {
@@ -78,12 +79,12 @@ public class PrintModel
         this.price = price;
     }
 
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
+    public BigDecimal getSumma() {
+        return summa;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setSumma(BigDecimal summa) {
+        this.summa = summa;
     }
 
     public BigDecimal getChange() {
@@ -125,4 +126,6 @@ public class PrintModel
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
+
+
 }

@@ -71,7 +71,7 @@ public class NewSaleController implements Initializable
     private TableColumn<CartTable,HBox> operations;
 
     @FXML
-    private Label totalSumma;
+    private Label jami;
 
     private static  int orderedId;
     //sold products calculation for locate cart items
@@ -91,7 +91,7 @@ public class NewSaleController implements Initializable
     public void initialize(URL location, ResourceBundle resources)
     {
         createMenu = new HashMap<Long,List<CartTable>>();
-        totalSumma.setText("0");
+        jami.setText("0");
         soldItems = new ArrayList<>();
         totalSellPrice  = BigDecimal.ZERO;
         productsGetFromDB();
@@ -138,7 +138,7 @@ public class NewSaleController implements Initializable
         {
             cardTable.getItems().clear();
             soldItems.clear();
-            totalSumma.setText("0");
+            jami.setText("0");
             totalSellPrice = new BigDecimal("0");
         });
 
@@ -161,14 +161,13 @@ public class NewSaleController implements Initializable
             cardTable.getItems().forEach(data ->
             {
                 PrintModel printModel = new PrintModel();
-                printModel.setProductName(data.getNameP());
+                printModel.setId((long) (printModels.size()  + 1));
+                printModel.setName(data.getNameP());
                 printModel.setDimension(data.getTypeDimension());
-                printModel.setProductCount(data.getCountP());
-                printModel.setChange(new BigDecimal("0"));
+                printModel.setQuantity(data.getCountP());
                 printModel.setPaidSumma(new BigDecimal("0"));
-                printModel.setTotalPrice(new BigDecimal(totalSumma.getText()));
-                printModel.setPrice(data.getSellPrice());
-                printModel.setTotal(data.getTotalSumm());
+                printModel.setSumma(new BigDecimal(jami.getText()));
+                printModel.setJami(new BigDecimal("0"));
                 printModels.add(printModel);
             });
             Print print = new Print(printModels);
@@ -407,6 +406,6 @@ public class NewSaleController implements Initializable
         {
             totalSellPrice = totalSellPrice.add(cartTable.getTotalSumm());
         });
-        totalSumma.setText(totalSellPrice.toString());
+        jami.setText(totalSellPrice.toString());
     }
 }

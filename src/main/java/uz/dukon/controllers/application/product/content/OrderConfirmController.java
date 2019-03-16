@@ -129,25 +129,14 @@ public class OrderConfirmController implements Initializable {
         orderDto.getList().forEach(transactionDto ->
         {
             PrintModel printModel = new PrintModel();
-            printModel.setProductName(transactionDto.getProductName());
-            printModel.setDimension(transactionDto.getDimension());
-            if(transactionDto.getDefaultSize() != null)
-                 printModel.setProductSize(transactionDto.getDefaultSize());
-            else
-                 printModel.setProductSize(new BigDecimal("0"));
-            if(transactionDto.getProductCount() != null)
-                printModel.setProductCount(transactionDto.getProductCount());
-            else
-                printModel.setProductCount(new BigDecimal("0"));
-            if(transactionDto.getTotalMetirP() != null)
-                printModel.setTotalMetr(transactionDto.getTotalMetirP());
-            else
-                printModel.setTotalMetr(new BigDecimal("0"));
-            printModel.setPrice(transactionDto.getProductPrice());
-            printModel.setTotalPrice(orderDto.getTotalAmount());
-            printModel.setTotal(transactionDto.getProductTotalSellPrice());
+            printModel.setId((long) (printModelList.size() + 1));
+            printModel.setName(transactionDto.getProductName());
+            printModel.setQuantity(transactionDto.getProductCount());
+            printModel.setSumma(transactionDto.getProductTotalSellPrice());
+            printModel.setJami(new BigDecimal(cashTextField.getText()).add(new BigDecimal(plasticTextField.getText())));
             printModelList.add(printModel);
         });
+
         Print print = new Print(printModelList);
         App.ctx.getBean(OrderService.class).save(orderDto);
         StartAgainEvent startAgainEvent = new StartAgainEvent(StartAgainEvent.ANY);

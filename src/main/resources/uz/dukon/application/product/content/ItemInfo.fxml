@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="526.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uz.dukon.controllers.application.product.content.ItemInfoController">
    <children>
-      <JFXTextField fx:id="productCount" layoutX="205.0" layoutY="104.0" prefHeight="39.0" prefWidth="187.0" promptText="Товар сони" styleClass="w-text-field">
+      <JFXTextField fx:id="quantity" layoutX="205.0" layoutY="104.0" prefHeight="39.0" prefWidth="187.0" promptText="Товар сони" styleClass="w-text-field">
          <font>
             <Font size="18.0" />
          </font>
@@ -39,7 +39,7 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="productName" alignment="CENTER" layoutX="2.0" layoutY="14.0" prefHeight="25.0" prefWidth="516.0" text="Label">
+      <Label fx:id="name" alignment="CENTER" layoutX="2.0" layoutY="14.0" prefHeight="25.0" prefWidth="516.0" text="Label">
          <font>
             <Font size="16.0" />
          </font>
@@ -89,7 +89,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="totalPrice" layoutX="213.0" layoutY="304.0" prefHeight="27.0" prefWidth="187.0" text="Label">
+      <Label fx:id="summa" layoutX="213.0" layoutY="304.0" prefHeight="27.0" prefWidth="187.0" text="Label">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

@@ -18,7 +18,7 @@
             <TableColumn fx:id="operations" maxWidth="328.0" minWidth="16.0" prefWidth="87.0" />
         </columns>
       </TableView>
-      <Label fx:id="totalSumma" layoutX="196.0" layoutY="594.0" prefHeight="35.0" prefWidth="176.0" text="12345645a" textFill="GREEN" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="350.0">
+      <Label fx:id="jami" layoutX="196.0" layoutY="594.0" prefHeight="35.0" prefWidth="176.0" text="12345645a" textFill="GREEN" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="350.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

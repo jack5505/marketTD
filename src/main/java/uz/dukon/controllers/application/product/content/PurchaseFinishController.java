@@ -57,13 +57,13 @@ public class PurchaseFinishController implements Initializable {
         {
             PrintModel printModel  = new PrintModel();
             printModel.setPrice(transactionDto.getProductPrice());
-            printModel.setTotalPrice(transactionDto.getProductTotalSellPrice());
+            printModel.setSumma(transactionDto.getProductTotalSellPrice());
             printModel.setPaidSumma(new BigDecimal(totalPaidSumma.getText()));
             printModel.setChange(new BigDecimal(change.getText()));
-            printModel.setProductCount(transactionDto.getProductCount());
-            printModel.setProductName(transactionDto.getProductName());
+            printModel.setQuantity(transactionDto.getProductCount());
+            printModel.setName(transactionDto.getProductName());
             printModel.setDimension(transactionDto.getDimension());
-            printModel.setTotalSumma(new BigDecimal(totalCost.getText()));
+            printModel.setJami(new BigDecimal(totalCost.getText()));
             printModelList.add(printModel);
         });
         Print print = new Print(printModelList);
